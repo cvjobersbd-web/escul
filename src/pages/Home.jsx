@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
   return (
@@ -437,7 +437,7 @@ const AboutSection = () => (
           strokeWidth="6"
           strokeLinecap="round"
         >
-          <path d="M20 5c15 15-15 25 0 40s-15 25 0 40-15 25 0 40-15 25 0 40-15 25 0 40-15 25 0 40" />
+          <path d="M20 5c15 15-15 25 0 40s-15 25 0 40-15 25 0 40-15 25 0 40-15 25 0 40" />
         </svg>
 
         {/* back pill image */}
@@ -543,18 +543,103 @@ const STATS = [
   { value: '5.5k+', label: 'Course Completions' },
 ];
 
-const StatsSection = () => (
-  <section className="bg-teal-500">
-    <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-white/20 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
-      {STATS.map((stat) => (
-        <div key={stat.label} className="px-6 py-14 text-center">
-          <p className="text-4xl font-extrabold text-white sm:text-5xl">{stat.value}</p>
-          <p className="mt-3 text-sm font-bold text-white/90">{stat.label}</p>
+const StatsSection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const totalSlides = STATS.length;
+  const autoPlayRef = useRef(null);
+
+  // চেক করুন ডিভাইস মোবাইল কিনা
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // অটো-প্লে স্লাইডার
+  useEffect(() => {
+    if (isMobile) {
+      autoPlayRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % totalSlides);
+      }, 3000);
+    }
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [isMobile, totalSlides]);
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    // ম্যানুয়ালি ক্লিক করলে অটো-প্লে রিসেট করুন
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % totalSlides);
+      }, 3000);
+    }
+  };
+
+  // মোবাইলে স্লাইডার, ডেস্কটপে গ্রিড
+  if (!isMobile) {
+    return (
+      <section className="bg-teal-500">
+        <div className="mx-auto grid max-w-7xl grid-cols-4 divide-x divide-white/20">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="px-6 py-14 text-center">
+              <p className="text-4xl font-extrabold text-white sm:text-5xl">{stat.value}</p>
+              <p className="mt-3 text-sm font-bold text-white/90">{stat.label}</p>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </section>
-);
+      </section>
+    );
+  }
+
+  // মোবাইল স্লাইডার ভিউ
+  return (
+    <section className="bg-teal-500 overflow-hidden">
+      <div className="relative mx-auto max-w-7xl">
+        {/* স্লাইডার কন্টেইনার */}
+        <div 
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {STATS.map((stat) => (
+            <div 
+              key={stat.label} 
+              className="w-full flex-shrink-0 px-6 py-14 text-center"
+            >
+              <p className="text-4xl font-extrabold text-white">{stat.value}</p>
+              <p className="mt-3 text-sm font-bold text-white/90">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* ডট ইন্ডিকেটর */}
+        <div className="flex justify-center gap-2 pb-4">
+          {STATS.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Go to slide ${index + 1}`}
+              onClick={() => goToSlide(index)}
+              className={`h-2 rounded-full transition-all ${
+                index === currentSlide 
+                  ? 'w-8 bg-white' 
+                  : 'w-2 bg-white/40'
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const TEACHERS = [
   {
