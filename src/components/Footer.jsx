@@ -66,11 +66,11 @@ const LinkRow = ({ label }) => (
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-amber-50 via-emerald-50 to-teal-50">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-10">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-10">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           {/* Brand column */}
-          <div>
-            <a href="/" className="flex items-center gap-3">
+          <div className="text-center sm:text-left">
+            <a href="/" className="inline-flex items-center gap-3">
               <svg viewBox="0 0 48 48" className="h-11 w-11 shrink-0" aria-hidden="true">
                 <path
                   d="M24 12c-4-3.2-9.4-4.6-14-3.4a1.6 1.6 0 00-1.2 1.6v22.4c0 1.1 1 1.9 2.1 1.6 4.2-1.1 9-.1 13.1 3V12z"
@@ -96,34 +96,34 @@ const Footer = () => {
               </div>
             </a>
 
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-gray-500">
+            <p className="mt-4 sm:mt-5 max-w-xs mx-auto sm:mx-0 text-sm leading-relaxed text-gray-500">
               University education is the foundation for shaping skilled, knowledgeable.
             </p>
 
-            <h6 className="mt-8 text-sm font-bold text-gray-900">Take Your Learning with You</h6>
-            <div className="mt-4 flex flex-wrap gap-3">
+            <h6 className="mt-6 sm:mt-8 text-sm font-bold text-gray-900">Take Your Learning with You</h6>
+            <div className="mt-3 sm:mt-4 flex flex-wrap justify-center sm:justify-start gap-3">
               <a
                 href="#"
-                className="flex items-center gap-2 rounded-full bg-teal-500 px-5 py-2.5 text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600"
+                className="flex items-center gap-2 rounded-full bg-teal-500 px-4 sm:px-5 py-2.5 text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600"
               >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.55C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.08-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                 </svg>
                 <span className="text-left leading-tight">
                   <span className="block text-[10px]">Download On The</span>
-                  <span className="block text-sm font-bold">App Store</span>
+                  <span className="block text-xs sm:text-sm font-bold">App Store</span>
                 </span>
               </a>
               <a
                 href="#"
-                className="flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-white shadow-md shadow-orange-500/30 transition hover:bg-orange-600"
+                className="flex items-center gap-2 rounded-full bg-orange-500 px-4 sm:px-5 py-2.5 text-white shadow-md shadow-orange-500/30 transition hover:bg-orange-600"
               >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 sm:h-6 sm:w-6">
                   <path d="M3.6 2.3c-.4.3-.6.8-.6 1.4v16.6c0 .6.2 1.1.6 1.4l.1.1L13.9 12 3.7 2.2l-.1.1zM17 15.5l-3.1-3.1V11.6l3.1-3.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3L17 15.5zm-13.3 5.6L13.9 12l-2.2-2.2L3.7 20.7v.4zm10.2-9.1l2.2-2.2L3.7 3.4v.4l10.2 8.2z" />
                 </svg>
                 <span className="text-left leading-tight">
                   <span className="block text-[10px]">Get It On</span>
-                  <span className="block text-sm font-bold">Play Store</span>
+                  <span className="block text-xs sm:text-sm font-bold">Play Store</span>
                 </span>
               </a>
             </div>
@@ -131,8 +131,8 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h6 className="text-lg font-bold text-gray-900">Quick Links</h6>
-            <ul className="mt-5 space-y-3">
+            <h6 className="text-center sm:text-left text-lg font-bold text-gray-900">Quick Links</h6>
+            <ul className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-center sm:text-left">
               {quickLinks.map((label) => (
                 <LinkRow key={label} label={label} />
               ))}
@@ -141,8 +141,8 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h6 className="text-lg font-bold text-gray-900">Resources</h6>
-            <ul className="mt-5 space-y-3">
+            <h6 className="text-center sm:text-left text-lg font-bold text-gray-900">Resources</h6>
+            <ul className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-center sm:text-left">
               {resourceLinks.map((label) => (
                 <LinkRow key={label} label={label} />
               ))}
@@ -151,16 +151,20 @@ const Footer = () => {
 
           {/* Get In Touch */}
           <div>
-            <h6 className="text-lg font-bold text-gray-900">Get In Touch</h6>
+            <h6 className="text-center sm:text-left text-lg font-bold text-gray-900">Get In Touch</h6>
 
-            <p className="mt-5 text-sm text-gray-500">Toll Free Customer Care</p>
-            <p className="mt-1 text-lg font-bold text-gray-900">+01 234 567 890</p>
+            <div className="text-center sm:text-left">
+              <p className="mt-4 sm:mt-5 text-sm text-gray-500">Toll Free Customer Care</p>
+              <p className="mt-1 text-lg font-bold text-gray-900">+01 234 567 890</p>
+            </div>
 
-            <p className="mt-5 text-sm text-gray-500">Need live support?</p>
-            <p className="mt-1 text-lg font-bold text-gray-900">mailinfo@escul.com</p>
+            <div className="text-center sm:text-left">
+              <p className="mt-4 sm:mt-5 text-sm text-gray-500">Need live support?</p>
+              <p className="mt-1 text-lg font-bold text-gray-900">mailinfo@escul.com</p>
+            </div>
 
-            <h6 className="mt-6 text-sm font-bold text-gray-900">Follow with Us:</h6>
-            <div className="mt-3 flex gap-3">
+            <h6 className="mt-6 text-center sm:text-left text-sm font-bold text-gray-900">Follow with Us:</h6>
+            <div className="mt-3 flex justify-center sm:justify-start gap-3">
               {socialIcons.map((icon) => (
                 <a
                   key={icon.label}
@@ -180,9 +184,9 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="border-t border-gray-200/70">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-sm text-gray-500 sm:flex-row">
-          <p>Copyright © 2026 Escul, All rights reserved.</p>
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 sm:px-6 py-5 sm:py-6 text-xs sm:text-sm text-gray-500">
+          <p className="text-center">Copyright © 2026 Escul, All rights reserved.</p>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             <a href="#" className="transition hover:text-teal-500">
               Terms of service
             </a>
