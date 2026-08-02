@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 
 const Home = () => {
   return (
@@ -54,7 +54,6 @@ const Home = () => {
       </div>
     </div>
 
-    <CoursesSection />
     <PopularCourses />
     <AboutSection />
     <StatsSection />
@@ -63,191 +62,6 @@ const Home = () => {
     <CtaSection />
     <WhyChooseSection />
     </>
-  );
-};
-
-const CATEGORIES = [
-  {
-    title: 'Business\nManagement',
-    from: 'from-emerald-400',
-    to: 'to-teal-600',
-    icon: (
-      // briefcase
-      <>
-        <rect x="3.5" y="8" width="17" height="11" rx="2" />
-        <path d="M8 8V6.5A1.5 1.5 0 0 1 9.5 5h5A1.5 1.5 0 0 1 16 6.5V8" />
-        <path d="M3.5 13h17" />
-      </>
-    ),
-  },
-  {
-    title: 'Website\nDevelopment',
-    from: 'from-violet-400',
-    to: 'to-indigo-600',
-    icon: (
-      // browser window with code
-      <>
-        <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
-        <path d="M3.5 8.5h17" />
-        <path d="M6.25 6.5h.01M8.75 6.5h.01" />
-        <path d="M9.5 12.5 7.5 14.5l2 2" />
-        <path d="M14.5 12.5l2 2-2 2" />
-      </>
-    ),
-  },
-  {
-    title: 'UI/UX\nDesign',
-    from: 'from-pink-400',
-    to: 'to-rose-600',
-    icon: (
-      // monitor with pen
-      <>
-        <rect x="3.5" y="4.5" width="12" height="9" rx="1.5" />
-        <path d="M7 17.5h5" />
-        <path d="M9.5 13.5v4" />
-        <path d="m15.5 10 4.5-4.5 1.5 1.5-4.5 4.5-2 .5.5-2Z" />
-      </>
-    ),
-  },
-  {
-    title: 'Digital\nMarketing',
-    from: 'from-sky-300',
-    to: 'to-sky-500',
-    icon: (
-      // megaphone
-      <>
-        <path d="M3.5 9.5v5h3.2l6.3 3.5v-12l-6.3 3.5H3.5Z" />
-        <path d="M15.5 8.2a4 4 0 0 1 0 7.6" />
-        <path d="M17.8 5.8a7.5 7.5 0 0 1 0 12.4" />
-      </>
-    ),
-  },
-  {
-    title: 'Practical\nLearning',
-    from: 'from-amber-300',
-    to: 'to-orange-500',
-    icon: (
-      // ABC blocks
-      <>
-        <rect x="3.5" y="4.5" width="6" height="6" rx="1" />
-        <rect x="10.5" y="4.5" width="6" height="6" rx="1" />
-        <rect x="7" y="11.5" width="6" height="6" rx="1" />
-        <text x="6.5" y="9" fontSize="4.2" fontWeight="700" fill="currentColor" stroke="none">A</text>
-        <text x="13.4" y="9" fontSize="4.2" fontWeight="700" fill="currentColor" stroke="none">B</text>
-        <text x="10" y="16" fontSize="4.2" fontWeight="700" fill="currentColor" stroke="none">C</text>
-      </>
-    ),
-  },
-];
-
-const CoursesSection = () => {
-  const trackRef = useRef(null);
-
-  const scrollByCard = (direction) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector('[data-card]');
-    const step = card ? card.offsetWidth + 24 : 300;
-    track.scrollBy({ left: direction * step, behavior: 'smooth' });
-  };
-
-  return (
-    <section className="bg-white px-6 py-20 sm:py-24">
-      <div className="relative mx-auto max-w-7xl">
-        <div className="mb-14 flex flex-wrap items-start justify-between gap-6">
-          <div className="relative">
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 60 70"
-              className="absolute -left-2 -top-11 h-16 w-16 text-teal-500"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M10 4c10 4 20 14 16 34-6-6-14-8-20-6 10 4 16 12 16 24" />
-              <path d="M10 46c-2 6-3 10-2 14" />
-            </svg>
-            <h2 className="relative text-3xl font-extrabold leading-tight text-gray-900 sm:text-4xl">
-              Browse Top Essential Digital
-              <br />
-              Education Courses
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => scrollByCard(-1)}
-              aria-label="Previous courses"
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-teal-500 text-white transition hover:bg-teal-600"
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 6l-6 6 6 6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollByCard(1)}
-              aria-label="Next courses"
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-teal-500 text-white transition hover:bg-teal-600"
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10 6l6 6-6 6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <div
-          ref={trackRef}
-          className="grid grid-cols-1 gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] sm:grid-cols-2 sm:overflow-visible lg:grid-cols-5 [&::-webkit-scrollbar]:hidden"
-        >
-          {CATEGORIES.map((cat) => (
-            <div
-              key={cat.title}
-              data-card
-              className={`group relative flex h-[330px] flex-col justify-between overflow-hidden rounded-[22px] bg-gradient-to-br ${cat.from} ${cat.to} p-7 shadow-xl shadow-black/5 transition-transform hover:-translate-y-1`}
-            >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/25">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-7 w-7 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {cat.icon}
-                </svg>
-              </div>
-
-              <div>
-                <h3 className="mb-6 text-2xl font-bold leading-snug text-white">
-                  {cat.title.split('\n').map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line}
-                      {i === 0 && <br />}
-                    </React.Fragment>
-                  ))}
-                </h3>
-                <button
-                  type="button"
-                  aria-label={`Explore ${cat.title.replace('\n', ' ')} courses`}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-gray-900 transition group-hover:translate-x-1"
-                >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 };
 
@@ -543,103 +357,18 @@ const STATS = [
   { value: '5.5k+', label: 'Course Completions' },
 ];
 
-const StatsSection = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const totalSlides = STATS.length;
-  const autoPlayRef = useRef(null);
-
-  // চেক করুন ডিভাইস মোবাইল কিনা
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  // অটো-প্লে স্লাইডার
-  useEffect(() => {
-    if (isMobile) {
-      autoPlayRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % totalSlides);
-      }, 3000);
-    }
-    return () => {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
-      }
-    };
-  }, [isMobile, totalSlides]);
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-    // ম্যানুয়ালি ক্লিক করলে অটো-প্লে রিসেট করুন
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-      autoPlayRef.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % totalSlides);
-      }, 3000);
-    }
-  };
-
-  // মোবাইলে স্লাইডার, ডেস্কটপে গ্রিড
-  if (!isMobile) {
-    return (
-      <section className="bg-teal-500">
-        <div className="mx-auto grid max-w-7xl grid-cols-4 divide-x divide-white/20">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="px-6 py-14 text-center">
-              <p className="text-4xl font-extrabold text-white sm:text-5xl">{stat.value}</p>
-              <p className="mt-3 text-sm font-bold text-white/90">{stat.label}</p>
-            </div>
-          ))}
+const StatsSection = () => (
+  <section className="bg-teal-500">
+    <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-white/20 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+      {STATS.map((stat) => (
+        <div key={stat.label} className="px-6 py-14 text-center">
+          <p className="text-4xl font-extrabold text-white sm:text-5xl">{stat.value}</p>
+          <p className="mt-3 text-sm font-bold text-white/90">{stat.label}</p>
         </div>
-      </section>
-    );
-  }
-
-  // মোবাইল স্লাইডার ভিউ
-  return (
-    <section className="bg-teal-500 overflow-hidden">
-      <div className="relative mx-auto max-w-7xl">
-        {/* স্লাইডার কন্টেইনার */}
-        <div 
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {STATS.map((stat) => (
-            <div 
-              key={stat.label} 
-              className="w-full flex-shrink-0 px-6 py-14 text-center"
-            >
-              <p className="text-4xl font-extrabold text-white">{stat.value}</p>
-              <p className="mt-3 text-sm font-bold text-white/90">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* ডট ইন্ডিকেটর */}
-        <div className="flex justify-center gap-2 pb-4">
-          {STATS.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              aria-label={`Go to slide ${index + 1}`}
-              onClick={() => goToSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentSlide 
-                  ? 'w-8 bg-white' 
-                  : 'w-2 bg-white/40'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+      ))}
+    </div>
+  </section>
+);
 
 const TEACHERS = [
   {
@@ -658,8 +387,8 @@ const TEACHERS = [
     rating: '4.9',
   },
   {
-    image: 'https://i.ibb.co.com/DPFT5kQP/rony-sir.jpg',
-    name: 'Rony Sir',
+    image: 'https://i.ibb.co.com/jPSN8cFv/image.png',
+    name: 'Hero Alam Sir',
     rating: '4.8',
   },
 ];
@@ -935,7 +664,7 @@ const WhyChooseSection = () => (
           />
         </div>
 
-        <div className="absolute right-2 top-1/2 h-24 w-24 -translate-y-1/2 sm:right-0 sm:h-36 sm:w-36 sm:translate-x-1/2 md:h-40 md:w-40">
+        <div className="absolute bottom-0 right-6 h-32 w-32 translate-y-1/2 sm:bottom-auto sm:right-0 sm:top-1/2 sm:h-36 sm:w-36 sm:translate-x-1/2 sm:-translate-y-1/2 md:h-40 md:w-40">
           <style>{`
             @keyframes spin-experience {
               from { transform: rotate(0deg); }
