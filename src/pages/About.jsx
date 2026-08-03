@@ -1,11 +1,13 @@
+// About.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
         <>
         {/* About Our University section - Enhanced */}
-        <section className="bg-white py-16 md:py-24">
-            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 md:grid-cols-2 md:px-12 lg:px-20">
+        <section className="bg-white py-12 md:py-16 lg:py-24">
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 md:grid-cols-2 md:gap-12 md:px-8 lg:gap-16 lg:px-12 xl:px-20">
                 {/* Left: image collage */}
                 <div
                     className="relative mx-auto w-full max-w-[560px]"
@@ -23,7 +25,7 @@ const About = () => {
                     <img
                         src="https://i.ibb.co.com/XfRRY7ZW/download.png"
                         alt="Students studying in the library"
-                        className="absolute rounded-2xl border-4 border-white object-cover shadow-lg transition-transform duration-300 hover:scale-105"
+                        className="absolute rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white object-cover shadow-lg transition-transform duration-300 hover:scale-105"
                         style={{
                             left: '5.6%',
                             top: '7.7%',
@@ -36,7 +38,7 @@ const About = () => {
                     <img
                         src="https://i.ibb.co.com/1GXYk61s/download-2.png"
                         alt="Two students reading together"
-                        className="absolute rounded-2xl border-4 border-white object-cover shadow-lg transition-transform duration-300 hover:scale-105"
+                        className="absolute rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white object-cover shadow-lg transition-transform duration-300 hover:scale-105"
                         style={{
                             left: '22.7%',
                             top: '23.1%',
@@ -49,7 +51,7 @@ const About = () => {
                     <img
                         src="https://i.ibb.co.com/LK19pss/download-1.png"
                         alt="Graduating students celebrating"
-                        className="absolute rounded-2xl border-4 border-white object-cover shadow-lg transition-transform duration-300 hover:scale-105"
+                        className="absolute rounded-xl sm:rounded-2xl border-2 sm:border-4 border-white object-cover shadow-lg transition-transform duration-300 hover:scale-105"
                         style={{
                             left: '60.6%',
                             top: '57.2%',
@@ -83,50 +85,50 @@ const About = () => {
                             </text>
                         </svg>
                         <div className="absolute inset-0 m-auto flex h-[64%] w-[64%] flex-col items-center justify-center rounded-full bg-white text-center shadow-md">
-                            <span className="text-xl font-extrabold leading-none text-teal-500 md:text-2xl">
+                            <span className="text-base font-extrabold leading-none text-teal-500 sm:text-xl md:text-2xl">
                                 50K
                             </span>
-                            <span className="mt-1.5 whitespace-nowrap text-[10px] font-medium leading-none text-slate-700 md:text-xs">
+                            <span className="mt-1 whitespace-nowrap text-[8px] font-medium leading-none text-slate-700 sm:text-[10px] md:text-xs">
                                 Active Students
                             </span>
                         </div>
                     </div>
 
                     {/* Decorative plus icon */}
-                    <div className="absolute left-[45%] top-[2%] text-2xl text-teal-400 opacity-60">
+                    <div className="absolute left-[45%] top-[2%] text-xl sm:text-2xl text-teal-400 opacity-60">
                         +
                     </div>
-                    <div className="absolute right-[8%] top-[45%] text-2xl text-teal-400 opacity-60">
+                    <div className="absolute right-[8%] top-[45%] text-xl sm:text-2xl text-teal-400 opacity-60">
                         +
                     </div>
                 </div>
 
                 {/* Right: content - Enhanced */}
-                <div className="flex flex-col justify-center">
-                    <div className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-teal-500">
-                        <span className="inline-block h-0.5 w-8 bg-teal-500"></span>
+                <div className="flex flex-col justify-center text-center md:text-left">
+                    <div className="mb-3 flex items-center justify-center md:justify-start gap-2 text-xs sm:text-sm font-bold uppercase tracking-wide text-teal-500">
+                        <span className="hidden md:inline-block h-0.5 w-8 bg-teal-500"></span>
                         About Our University
                     </div>
-                    <h2 className="text-3xl font-extrabold leading-tight text-slate-900 md:text-4xl lg:text-5xl">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
                         Welcome To <span className="text-teal-500">Escul</span> University.
                     </h2>
-                    <p className="mt-6 text-base leading-relaxed text-slate-500 md:text-lg">
+                    <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-slate-500">
                         Collaboratively simplify user friendly networks after principle
                         centered coordinate effective methods of empowerment
                         distributed niche markets pursue market positioning
                         web-readiness after resource sucking applications.
                     </p>
 
-                    <ul className="mt-6 space-y-3">
+                    <ul className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
                         {[
                             'Get access to 4,000+ of our top courses',
                             'Popular topics to learn now',
                             'Find the right instructor for you',
                         ].map((item) => (
-                            <li key={item} className="flex items-center gap-3 text-slate-700">
-                                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-500/10 text-teal-500">
+                            <li key={item} className="flex items-center justify-center md:justify-start gap-3 text-sm sm:text-base text-slate-700">
+                                <span className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full bg-teal-500/10 text-teal-500">
                                     <svg
-                                        className="h-4 w-4"
+                                        className="h-3 w-3 sm:h-4 sm:w-4"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
@@ -142,14 +144,14 @@ const About = () => {
                         ))}
                     </ul>
 
-                    <div className="mt-8 flex flex-wrap items-center gap-4">
-                        <a
-                            href="#"
-                            className="inline-flex w-fit items-center gap-2 rounded-full bg-teal-500 px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-500/30"
+                    <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
+                        <Link
+                            to="/courses"
+                            className="inline-flex w-fit items-center gap-2 rounded-full bg-teal-500 px-5 sm:px-7 py-2.5 sm:py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wide text-white transition hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-500/30"
                         >
                             Learn More
                             <svg
-                                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                                className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -159,11 +161,11 @@ const About = () => {
                             >
                                 <path d="M5 12h14M13 6l6 6-6 6" />
                             </svg>
-                        </a>
-                        <div className="flex items-center gap-2 text-sm text-slate-500">
+                        </Link>
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-500">
                             <span className="flex -space-x-2">
                                 {['https://i.pravatar.cc/32?img=11', 'https://i.pravatar.cc/32?img=33', 'https://i.pravatar.cc/32?img=15'].map((src, i) => (
-                                    <img key={i} src={src} alt="" className="h-8 w-8 rounded-full border-2 border-white" />
+                                    <img key={i} src={src} alt="" className="h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 border-white" />
                                 ))}
                             </span>
                             <span className="font-medium text-slate-700">2.5k+ students</span>
@@ -175,7 +177,7 @@ const About = () => {
 
         {/* What We Do / features section - Enhanced */}
         <section
-            className="relative overflow-hidden py-16 md:py-24"
+            className="relative overflow-hidden py-12 md:py-16 lg:py-24"
             style={{
                 background:
                     'linear-gradient(120deg, #d9f0ea 0%, #eef6ee 45%, #f2f1de 75%, #e9f0d8 100%)',
@@ -183,7 +185,7 @@ const About = () => {
         >
             {/* decorative elements */}
             <svg
-                className="pointer-events-none absolute left-8 top-10 hidden h-40 w-6 lg:block"
+                className="pointer-events-none absolute left-4 sm:left-8 top-8 sm:top-10 hidden lg:block h-32 sm:h-40 w-5 sm:w-6"
                 viewBox="0 0 24 220"
                 fill="none"
             >
@@ -195,7 +197,7 @@ const About = () => {
                 />
             </svg>
 
-            <div className="pointer-events-none absolute -right-4 bottom-10 hidden h-24 w-24 lg:block">
+            <div className="pointer-events-none absolute -right-4 bottom-10 hidden lg:block h-20 w-20 sm:h-24 sm:w-24">
                 <svg viewBox="0 0 100 100" className="h-full w-full">
                     <circle
                         cx="50"
@@ -215,9 +217,9 @@ const About = () => {
                 </svg>
             </div>
 
-            <div className="relative mx-auto max-w-5xl px-6 text-center md:px-12">
-                <div className="mb-4 flex items-center justify-center gap-2 text-sm font-bold text-slate-700">
-                    <span className="inline-block h-0.5 w-8 bg-teal-400"></span>
+            <div className="relative mx-auto max-w-5xl px-4 sm:px-6 text-center md:px-8 lg:px-12">
+                <div className="mb-3 sm:mb-4 flex items-center justify-center gap-2 text-xs sm:text-sm font-bold text-slate-700">
+                    <span className="hidden sm:inline-block h-0.5 w-6 sm:w-8 bg-teal-400"></span>
                     <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -225,29 +227,29 @@ const About = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="h-4 w-4 text-teal-500"
+                        className="h-3 w-3 sm:h-4 sm:w-4 text-teal-500"
                         aria-hidden="true"
                     >
                         <path d="M2 4.5c2.5-1 5.5-1 8 0v15c-2.5-1-5.5-1-8 0v-15Z" />
                         <path d="M22 4.5c-2.5-1-5.5-1-8 0v15c2.5-1 5.5-1 8 0v-15Z" />
                     </svg>
                     What we do
-                    <span className="inline-block h-0.5 w-8 bg-teal-400"></span>
+                    <span className="hidden sm:inline-block h-0.5 w-6 sm:w-8 bg-teal-400"></span>
                 </div>
-                <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl lg:text-5xl">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900">
                     Your Path To <span className="text-teal-500">Success</span> Starts Here
                 </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-slate-600">
+                <p className="mx-auto mt-3 sm:mt-4 max-w-2xl text-sm sm:text-base text-slate-600">
                     We provide comprehensive digital education solutions designed to help you achieve your goals.
                 </p>
             </div>
 
-            <div className="relative mx-auto mt-14 grid max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-3 md:px-12 lg:px-6">
+            <div className="relative mx-auto mt-10 sm:mt-14 grid max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8 px-4 sm:px-6 md:px-8 lg:px-6">
                 {[
                     {
                         title: 'Learn From Anywhere',
                         icon: (
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-9 w-9">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9">
                                 <rect x="3" y="4" width="18" height="12" rx="1.5" />
                                 <path d="M2 19h20" strokeLinecap="round" />
                                 <circle cx="9" cy="9" r="1.8" />
@@ -260,7 +262,7 @@ const About = () => {
                     {
                         title: 'Expert Instructor',
                         icon: (
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-9 w-9">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9">
                                 <circle cx="12" cy="10.5" r="3.2" />
                                 <path d="M6.5 20c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2" strokeLinecap="round" />
                                 <path d="M7.5 7.2L12 5l4.5 2.2-4.5 2.1-4.5-2.1z" strokeLinejoin="round" />
@@ -272,7 +274,7 @@ const About = () => {
                     {
                         title: '24/7 Live Support',
                         icon: (
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-9 w-9">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9">
                                 <rect x="4" y="4" width="16" height="5.5" rx="1.2" />
                                 <rect x="4" y="11.5" width="16" height="5.5" rx="1.2" />
                                 <circle cx="7.3" cy="6.75" r="0.6" fill="currentColor" stroke="none" />
@@ -285,24 +287,24 @@ const About = () => {
                 ].map((card, index) => (
                     <div
                         key={card.title}
-                        className="group relative rounded-2xl border border-slate-100 bg-white px-8 py-10 text-center shadow-[0_10px_40px_-15px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)]"
+                        className="group relative rounded-2xl border border-slate-100 bg-white px-6 sm:px-8 py-8 sm:py-10 text-center shadow-[0_10px_40px_-15px_rgba(15,23,42,0.15)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(15,23,42,0.25)]"
                     >
                         {/* Number badge */}
-                        <div className="absolute -top-3 -right-3 flex h-7 w-7 items-center justify-center rounded-full bg-slate-800 text-xs font-bold text-white">
+                        <div className="absolute -top-3 -right-3 flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-slate-800 text-[10px] sm:text-xs font-bold text-white">
                             {index + 1}
                         </div>
-                        <div className={`mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br ${card.color} text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                        <div className={`mx-auto mb-4 sm:mb-6 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br ${card.color} text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}>
                             {card.icon}
                         </div>
-                        <h3 className="text-xl font-extrabold text-slate-900">
+                        <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">
                             {card.title}
                         </h3>
-                        <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                        <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-500">
                             It uses digital technology to deliver high-quality
                             courses, interactive lessons, and expert-led training
                             across a wide range of subjects.
                         </p>
-                        <div className="mt-6 inline-block text-sm font-semibold text-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <div className="mt-4 sm:mt-6 inline-block text-xs sm:text-sm font-semibold text-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                             Learn More →
                         </div>
                     </div>
@@ -311,9 +313,9 @@ const About = () => {
         </section>
 
         {/* Popular Courses CTA section - Enhanced */}
-        <section className="relative overflow-hidden bg-white py-16 md:py-24">
+        <section className="relative overflow-hidden bg-white py-12 md:py-16 lg:py-24">
             <svg
-                className="pointer-events-none absolute right-10 top-1/2 hidden h-48 w-6 -translate-y-1/2 lg:block"
+                className="pointer-events-none absolute right-4 sm:right-10 top-1/2 hidden lg:block h-40 sm:h-48 w-5 sm:w-6 -translate-y-1/2"
                 viewBox="0 0 24 220"
                 fill="none"
             >
@@ -325,18 +327,18 @@ const About = () => {
                 />
             </svg>
 
-            <div className="relative mx-auto max-w-6xl px-6 md:px-12 lg:px-6">
+            <div className="relative mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-6">
                 {/* Section header */}
-                <div className="mb-12 text-center">
-                    <span className="inline-block rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-teal-600">
+                <div className="mb-8 sm:mb-12 text-center">
+                    <span className="inline-block rounded-full bg-teal-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-teal-600">
                         Popular Courses
                     </span>
-                    <h2 className="mt-3 text-3xl font-extrabold text-slate-900 md:text-4xl">
+                    <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
                         Start Your Learning Journey Today
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
                     {[
                         {
                             bg: '#1fa98c',
@@ -353,28 +355,28 @@ const About = () => {
                     ].map((cta, i) => (
                         <div
                             key={i}
-                            className="group relative flex items-end overflow-hidden rounded-3xl px-8 pt-8 transition-all duration-300 hover:shadow-2xl sm:px-10"
-                            style={{ backgroundColor: cta.bg, height: '300px' }}
+                            className="group relative flex items-end overflow-hidden rounded-2xl sm:rounded-3xl px-6 sm:px-8 pt-6 sm:pt-8 transition-all duration-300 hover:shadow-2xl"
+                            style={{ backgroundColor: cta.bg, height: '280px' }}
                         >
-                            <div className="relative z-10 max-w-[58%] pb-8">
-                                <div className="mb-2 flex items-center gap-2">
-                                    <span className="rounded-full bg-white/20 px-3 py-0.5 text-xs font-bold uppercase tracking-wide text-white">
+                            <div className="relative z-10 max-w-[55%] sm:max-w-[58%] pb-6 sm:pb-8">
+                                <div className="mb-1 sm:mb-2 flex items-center gap-2">
+                                    <span className="rounded-full bg-white/20 px-2 sm:px-3 py-0.5 text-[10px] sm:text-xs font-bold uppercase tracking-wide text-white">
                                         {i === 0 ? '🔥 Popular' : '⭐ New'}
                                     </span>
                                 </div>
-                                <h3 className="text-2xl font-extrabold leading-snug text-white sm:text-3xl">
+                                <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-snug text-white">
                                     {cta.title}
                                 </h3>
-                                <p className="mt-2 text-lg font-bold text-white/90">
+                                <p className="mt-1 sm:mt-2 text-base sm:text-lg font-bold text-white/90">
                                     {cta.price}
                                 </p>
-                                <a
-                                    href="#"
-                                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-sm transition hover:bg-white/30"
+                                <Link
+                                    to="/courses"
+                                    className="mt-3 sm:mt-4 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wide text-white backdrop-blur-sm transition hover:bg-white/30"
                                 >
                                     Enroll Now
                                     <svg
-                                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                                        className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1"
                                         viewBox="0 0 24 24"
                                         fill="none"
                                         stroke="currentColor"
@@ -382,7 +384,7 @@ const About = () => {
                                     >
                                         <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
-                                </a>
+                                </Link>
                             </div>
 
                             <img
@@ -397,15 +399,15 @@ const About = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="bg-gradient-to-br from-teal-50 to-emerald-50 py-16 md:py-24">
-            <div className="mx-auto max-w-6xl px-6 text-center md:px-12">
-                <span className="inline-block rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-teal-600">
+        <section className="bg-gradient-to-br from-teal-50 to-emerald-50 py-12 md:py-16 lg:py-24">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 text-center md:px-8 lg:px-12">
+                <span className="inline-block rounded-full bg-teal-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-teal-600">
                     Testimonials
                 </span>
-                <h2 className="mt-3 text-3xl font-extrabold text-slate-900 md:text-4xl">
+                <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
                     What Our Students Say
                 </h2>
-                <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+                <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
                     {[
                         {
                             name: 'Sarah Johnson',
@@ -426,20 +428,20 @@ const About = () => {
                             avatar: 'https://i.pravatar.cc/64?img=15',
                         },
                     ].map((testimonial) => (
-                        <div key={testimonial.name} className="rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                            <div className="flex items-center justify-center gap-1 text-amber-400">
+                        <div key={testimonial.name} className="rounded-2xl bg-white p-5 sm:p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                            <div className="flex items-center justify-center gap-0.5 sm:gap-1 text-amber-400">
                                 {[...Array(5)].map((_, i) => (
-                                    <svg key={i} viewBox="0 0 24 24" className="h-4 w-4 fill-current">
+                                    <svg key={i} viewBox="0 0 24 24" className="h-3 w-3 sm:h-4 sm:w-4 fill-current">
                                         <path d="M12 3.5l2.47 5.15 5.53.65-4.1 3.83 1.13 5.47L12 15.9l-4.03 2.7 1.13-5.47-4.1-3.83 5.53-.65L12 3.5Z" />
                                     </svg>
                                 ))}
                             </div>
-                            <p className="mt-3 text-sm leading-relaxed text-slate-600">"{testimonial.quote}"</p>
-                            <div className="mt-4 flex items-center justify-center gap-3">
-                                <img src={testimonial.avatar} alt={testimonial.name} className="h-10 w-10 rounded-full object-cover" />
+                            <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-slate-600">"{testimonial.quote}"</p>
+                            <div className="mt-3 sm:mt-4 flex items-center justify-center gap-3">
+                                <img src={testimonial.avatar} alt={testimonial.name} className="h-8 w-8 sm:h-10 sm:w-10 rounded-full object-cover" />
                                 <div className="text-left">
-                                    <p className="font-bold text-slate-900">{testimonial.name}</p>
-                                    <p className="text-xs text-slate-500">{testimonial.role}</p>
+                                    <p className="text-sm sm:text-base font-bold text-slate-900">{testimonial.name}</p>
+                                    <p className="text-[10px] sm:text-xs text-slate-500">{testimonial.role}</p>
                                 </div>
                             </div>
                         </div>

@@ -7,14 +7,15 @@ import Courses from './pages/Courses';
 import CourseDetails from './pages/CourseDetails';
 import FAQ from './pages/FAQ';
 import MyClass from './pages/MyClass';
+import ClassRoom from './pages/ClassRoom'; // ইম্পোর্ট করুন
 import Helpdesk from './pages/Helpdesk';
 import Login from './pages/Login';
-import ScrollToTop from './components/ScrollToTop'; // ইম্পোর্ট করুন
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <>
-      <ScrollToTop /> {/* এখানে যুক্ত করুন */}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Root />}>
           <Route index element={<Home />} />
@@ -23,6 +24,7 @@ function App() {
           <Route path="courses/:id" element={<CourseDetails />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="my-class" element={<MyClass />} />
+          <Route path="my-class/:courseId" element={<ClassRoom />} /> {/* নতুন রাউট */}
           <Route path="helpdesk" element={<Helpdesk />} />
           <Route path="login" element={<Login />} />
         </Route>

@@ -1,103 +1,13 @@
 // Helpdesk.jsx
 import React, { useState } from 'react';
-
-const HELP_CATEGORIES = [
-  {
-    id: 1,
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-    title: 'Account & Security',
-    description: 'Manage your account settings, password, and security preferences.',
-    color: 'from-teal-500 to-teal-600',
-  },
-  {
-    id: 2,
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 8v4l3 3" />
-      </svg>
-    ),
-    title: 'Course Support',
-    description: 'Get help with course content, assignments, and learning materials.',
-    color: 'from-blue-500 to-blue-600',
-  },
-  {
-    id: 3,
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16v16H4z" />
-        <path d="M8 8h8" />
-        <path d="M8 12h6" />
-        <path d="M8 16h4" />
-      </svg>
-    ),
-    title: 'Technical Issues',
-    description: 'Report technical problems, bugs, or platform-related issues.',
-    color: 'from-amber-500 to-amber-600',
-  },
-  {
-    id: 4,
-    icon: (
-      <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5" />
-        <path d="M2 12l10 5 10-5" />
-      </svg>
-    ),
-    title: 'Certificates & Payments',
-    description: 'Questions about certificates, invoices, and payment processing.',
-    color: 'from-purple-500 to-purple-600',
-  },
-];
-
-const FAQ_ITEMS = [
-  {
-    question: 'How do I reset my password?',
-    answer: 'Go to the login page and click on "Forgot Password". Enter your registered email address and we will send you a password reset link.'
-  },
-  {
-    question: 'How do I access my purchased courses?',
-    answer: 'After logging in, go to "My Class" section in the navigation menu. All your enrolled courses will be listed there.'
-  },
-  {
-    question: 'How do I contact my instructor?',
-    answer: 'Each course has a discussion forum where you can post questions. You can also message your instructor directly from the course dashboard.'
-  },
-  {
-    question: 'What should I do if a video is not playing?',
-    answer: 'Try refreshing the page or clearing your browser cache. If the issue persists, please contact our technical support team.'
-  },
-];
+import { Link } from 'react-router-dom';
 
 const Helpdesk = () => {
-  const [activeFaq, setActiveFaq] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [ticketSubject, setTicketSubject] = useState('');
-  const [ticketMessage, setTicketMessage] = useState('');
-
-  const toggleFaq = (index) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
-
-  const handleSubmitTicket = (e) => {
-    e.preventDefault();
-    // Handle ticket submission here
-    alert('Your ticket has been submitted! Our team will get back to you within 24 hours.');
-    setTicketSubject('');
-    setTicketMessage('');
-    setSelectedCategory(null);
-  };
-
   return (
     <>
-      {/* Helpdesk Hero Section */}
+      {/* Helpdesk Hero Section - Coming Soon */}
       <section
-        className="relative overflow-hidden py-16 md:py-20"
+        className="relative overflow-hidden py-16 md:py-20 lg:py-24"
         style={{
           background:
             'linear-gradient(135deg, #d6ecf3 0%, #eef4ec 45%, #eef0da 75%, #e9edda 100%)',
@@ -112,199 +22,216 @@ const Helpdesk = () => {
           style={{ backgroundColor: '#c5e8d9' }}
         />
 
-        <div className="relative mx-auto max-w-4xl px-6 text-center md:px-12">
-          <span className="inline-block rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-teal-600">
-            Need Help?
-          </span>
-          <h1 className="mt-4 text-4xl font-extrabold text-slate-900 md:text-5xl lg:text-6xl">
-            Help <span className="text-teal-500">Desk</span>
-          </h1>
-          <p className="mt-4 mx-auto max-w-2xl text-base text-slate-600 md:text-lg">
-            Get the support you need. Browse our help categories, check the FAQs, or submit a support ticket.
-          </p>
+        {/* Decorative floating elements */}
+        <div className="absolute top-10 left-10 animate-bounce opacity-20">
+          <svg viewBox="0 0 24 24" className="h-12 w-12 text-teal-500" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
         </div>
-      </section>
-
-      {/* Help Categories */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl">
-              How Can We <span className="text-teal-500">Help You</span>?
-            </h2>
-            <p className="mt-3 text-gray-500">Choose a category below to get started</p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {HELP_CATEGORIES.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category)}
-                className={`group rounded-2xl border border-gray-200 p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  selectedCategory?.id === category.id
-                    ? 'border-teal-500 shadow-lg ring-2 ring-teal-500/20'
-                    : 'hover:border-teal-300'
-                }`}
-              >
-                <div className={`mb-4 inline-flex rounded-xl bg-gradient-to-br ${category.color} p-3 text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}>
-                  {category.icon}
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">{category.title}</h3>
-                <p className="mt-2 text-sm text-gray-500">{category.description}</p>
-                <span className="mt-3 inline-flex items-center text-sm font-semibold text-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  Learn More →
-                </span>
-              </button>
-            ))}
-          </div>
+        <div className="absolute bottom-10 right-10 animate-bounce delay-150 opacity-20">
+          <svg viewBox="0 0 24 24" className="h-10 w-10 text-teal-500" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4l3 3" />
+          </svg>
         </div>
-      </section>
 
-      {/* FAQ Section */}
-      <section className="bg-gradient-to-br from-teal-50 to-emerald-50 py-16">
-        <div className="mx-auto max-w-4xl px-6 md:px-12">
-          <div className="mb-10 text-center">
-            <span className="inline-block rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-teal-600">
-              Quick Answers
+        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
+          <div className="mb-4 sm:mb-6 inline-block rounded-full bg-teal-500/20 backdrop-blur-sm px-4 sm:px-6 py-1.5 sm:py-2 border border-teal-500/30">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-teal-700">
+              🚀 Coming Soon
             </span>
-            <h2 className="mt-3 text-3xl font-extrabold text-slate-900 md:text-4xl">
-              Frequently Asked Questions
-            </h2>
+          </div>
+          
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+            Help Desk Is
+            <br />
+            <span className="text-teal-500">Under Development</span>
+          </h1>
+          
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+            We're building a comprehensive help desk system to serve you better.
+            Coming soon with live chat, ticket tracking, and instant support!
+          </p>
+
+          {/* Progress Bar */}
+          <div className="mt-6 sm:mt-8 max-w-md mx-auto">
+            <div className="flex justify-between text-xs sm:text-sm text-slate-600 mb-2">
+              <span>Development Progress</span>
+              <span>70%</span>
+            </div>
+            <div className="h-2.5 sm:h-3 w-full overflow-hidden rounded-full bg-white/50">
+              <div 
+                className="h-full rounded-full bg-gradient-to-r from-teal-400 to-teal-500 transition-all duration-1000"
+                style={{ width: '70%' }}
+              ></div>
+            </div>
           </div>
 
-          <div className="space-y-4">
-            {FAQ_ITEMS.map((item, index) => (
-              <div
-                key={index}
-                className="rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="flex w-full items-center justify-between px-6 py-4 text-left"
-                >
-                  <span className="font-semibold text-slate-900">{item.question}</span>
-                  <span className={`ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition duration-300 ${activeFaq === index ? 'rotate-180 bg-teal-500 text-white' : ''}`}>
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
-                </button>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    activeFaq === index ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <p className="px-6 pb-4 text-gray-600">{item.answer}</p>
-                </div>
+          {/* Action Buttons */}
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 rounded-full bg-teal-500 px-6 sm:px-8 py-2.5 sm:py-3.5 text-sm sm:text-base font-bold text-white transition hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-500/30"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4 sm:h-5 sm:w-5">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to Home
+            </Link>
+            <Link
+              to="/faq"
+              className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm px-6 sm:px-8 py-2.5 sm:py-3.5 text-sm sm:text-base font-bold text-slate-700 border border-slate-200 transition hover:bg-white hover:shadow-lg"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4 sm:h-5 sm:w-5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 17h.01" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Visit FAQ
+            </Link>
+          </div>
+
+          {/* Features coming soon */}
+          <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto">
+            {[
+              { icon: '💬', title: 'Live Chat', desc: 'Real-time support with agents' },
+              { icon: '🎫', title: 'Ticket System', desc: 'Track your support tickets' },
+              { icon: '📱', title: 'Mobile Support', desc: 'Help on the go' },
+            ].map((feature) => (
+              <div key={feature.title} className="rounded-xl bg-white/60 backdrop-blur-sm p-4 sm:p-5 text-center border border-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <div className="text-3xl sm:text-4xl mb-2">{feature.icon}</div>
+                <h4 className="text-sm sm:text-base font-semibold text-slate-900">{feature.title}</h4>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">{feature.desc}</p>
               </div>
             ))}
           </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-gray-500">
-              Still have questions?{' '}
-              <button
-                onClick={() => setSelectedCategory(HELP_CATEGORIES[0])}
-                className="font-semibold text-teal-500 hover:underline"
-              >
-                Submit a ticket
-              </button>
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* Support Ticket Form */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-3xl px-6 md:px-12">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-extrabold text-slate-900 md:text-4xl">
-              Submit a <span className="text-teal-500">Support Ticket</span>
+      {/* Coming Soon Preview Section */}
+      <section className="bg-white py-12 sm:py-16 md:py-20">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-10">
+            <span className="inline-block rounded-full bg-teal-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-teal-600">
+              Preview
+            </span>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">
+              What's <span className="text-teal-500">Coming</span>
             </h2>
-            <p className="mt-3 text-gray-500">
-              Our team will respond within 24 hours
+            <p className="mt-2 text-sm sm:text-base text-slate-600">
+              Here's a sneak peek of our upcoming help desk features
             </p>
           </div>
 
-          <form onSubmit={handleSubmitTicket} className="space-y-6 rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-            {/* Category Selection */}
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-slate-700">
-                Category <span className="text-red-500">*</span>
-              </label>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {HELP_CATEGORIES.map((category) => (
-                  <button
-                    key={category.id}
-                    type="button"
-                    onClick={() => setSelectedCategory(category)}
-                    className={`rounded-xl border-2 p-3 text-center transition ${
-                      selectedCategory?.id === category.id
-                        ? 'border-teal-500 bg-teal-50'
-                        : 'border-gray-200 hover:border-teal-300'
-                    }`}
-                  >
-                    <div className={`mx-auto mb-1 inline-flex rounded-lg bg-gradient-to-br ${category.color} p-2 text-white`}>
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <path d="M9 12l2 2 4-4" />
-                      </svg>
-                    </div>
-                    <p className="text-xs font-medium text-slate-700">{category.title.split('&')[0].trim()}</p>
-                  </button>
+          {/* Preview Cards with Blur */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {/* Help Categories Preview */}
+            <div className="relative rounded-2xl border border-gray-200 p-4 sm:p-6 bg-gray-50/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-teal-500/20 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-teal-500" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">Help Categories</h3>
+              </div>
+              <div className="space-y-3">
+                {['Account & Security', 'Course Support', 'Technical Issues', 'Certificates & Payments'].map((cat) => (
+                  <div key={cat} className="flex items-center gap-3 p-2 rounded-lg bg-white border border-gray-100">
+                    <div className="h-3 w-3 rounded-full bg-teal-400"></div>
+                    <span className="text-sm text-slate-600">{cat}</span>
+                  </div>
                 ))}
               </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-sm rounded-2xl">
+                <span className="rounded-full bg-teal-500 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-teal-500/30">
+                  🔜 Coming Soon
+                </span>
+              </div>
             </div>
 
-            {/* Subject */}
-            <div>
-              <label htmlFor="subject" className="mb-2 block text-sm font-semibold text-slate-700">
-                Subject <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="subject"
-                value={ticketSubject}
-                onChange={(e) => setTicketSubject(e.target.value)}
-                placeholder="Briefly describe your issue"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 transition focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20"
-                required
-              />
+            {/* Ticket Form Preview */}
+            <div className="relative rounded-2xl border border-gray-200 p-4 sm:p-6 bg-gray-50/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-purple-500" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">Support Ticket</h3>
+              </div>
+              <div className="space-y-3">
+                <div className="h-10 rounded-lg bg-white border border-gray-200"></div>
+                <div className="h-10 rounded-lg bg-white border border-gray-200"></div>
+                <div className="h-20 rounded-lg bg-white border border-gray-200"></div>
+                <div className="h-10 rounded-lg bg-teal-400/30"></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-sm rounded-2xl">
+                <span className="rounded-full bg-purple-500 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-purple-500/30">
+                  🔜 Coming Soon
+                </span>
+              </div>
             </div>
 
-            {/* Message */}
-            <div>
-              <label htmlFor="message" className="mb-2 block text-sm font-semibold text-slate-700">
-                Message <span className="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                value={ticketMessage}
-                onChange={(e) => setTicketMessage(e.target.value)}
-                placeholder="Please provide as much detail as possible..."
-                rows="5"
-                className="w-full rounded-xl border border-gray-300 px-4 py-3 transition focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20"
-                required
-              />
+            {/* Live Chat Preview */}
+            <div className="relative rounded-2xl border border-gray-200 p-4 sm:p-6 bg-gray-50/50 sm:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900">Live Chat Support</h3>
+                <span className="ml-auto rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Coming Soon</span>
+              </div>
+              <div className="flex items-center gap-4 p-4 rounded-xl bg-white border border-gray-100">
+                <div className="h-12 w-12 rounded-full bg-emerald-100 flex items-center justify-center text-2xl">
+                  🤖
+                </div>
+                <div className="flex-1">
+                  <div className="h-2 w-32 rounded-full bg-gray-200 mb-2"></div>
+                  <div className="h-2 w-48 rounded-full bg-gray-200"></div>
+                </div>
+                <div className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse"></div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-sm rounded-2xl">
+                <span className="rounded-full bg-emerald-500 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-emerald-500/30">
+                  🔜 Coming Soon
+                </span>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-teal-500 px-6 py-4 text-sm font-bold text-white shadow-lg shadow-teal-500/30 transition hover:bg-teal-600 hover:shadow-xl"
-            >
-              Submit Ticket
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M13 6l6 6-6 6" />
+      {/* Notification Section */}
+      <section className="bg-gradient-to-br from-teal-50 to-emerald-50 py-12 sm:py-16">
+        <div className="mx-auto max-w-2xl px-4 sm:px-6 text-center">
+          <div className="rounded-2xl bg-white p-6 sm:p-8 shadow-lg border border-teal-100">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-teal-500/10">
+              <svg viewBox="0 0 24 24" className="h-7 w-7 text-teal-500" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M12 8v4l2 2" />
               </svg>
-            </button>
-
-            <p className="text-center text-xs text-gray-400">
-              By submitting a ticket, you agree to our{' '}
-              <a href="#" className="text-teal-500 hover:underline">Terms of Service</a> and{' '}
-              <a href="#" className="text-teal-500 hover:underline">Privacy Policy</a>
+            </div>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900">Want to be notified?</h3>
+            <p className="mt-2 text-sm sm:text-base text-gray-500">
+              Get notified when our help desk goes live with all the features.
             </p>
-          </form>
+            <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 rounded-full border border-gray-200 px-4 py-2.5 sm:py-3 text-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/20"
+              />
+              <button className="rounded-full bg-teal-500 px-6 py-2.5 sm:py-3 text-sm font-bold text-white transition hover:bg-teal-600 hover:shadow-lg hover:shadow-teal-500/30 whitespace-nowrap">
+                Notify Me
+              </button>
+            </div>
+            <p className="mt-3 text-xs text-gray-400">We'll never spam you. Unsubscribe anytime.</p>
+          </div>
         </div>
       </section>
     </>
