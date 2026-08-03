@@ -1,23 +1,26 @@
+// Navbar.jsx
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { label: 'HOME', hasDropdown: true },
-  { label: 'ABOUT US', hasDropdown: false },
-  { label: 'COURSES', hasDropdown: true },
-  { label: 'EVENTS', hasDropdown: true },
-  { label: 'PAGES', hasDropdown: true },
-  { label: 'BLOG', hasDropdown: true },
-  { label: 'CONTACT US', hasDropdown: false },
+  { label: 'HOME', path: '/', hasDropdown: false },
+  { label: 'ABOUT US', path: '/about', hasDropdown: false },
+  { label: 'COURSES', path: '/courses', hasDropdown: false },
+  { label: 'FAQ', path: '/faq', hasDropdown: false },
+  { label: 'PAGES', path: '/pages', hasDropdown: true },
+  { label: 'BLOG', path: '/blog', hasDropdown: true },
+  { label: 'CONTACT US', path: '/contact', hasDropdown: false },
 ];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className="border-b border-gray-100 bg-white px-4 py-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 rounded-full bg-white px-6 py-3 shadow-md ring-1 ring-gray-100">
         {/* Logo */}
-        <a href="/" className="flex shrink-0 items-center gap-3">
+        <Link to="/" className="flex shrink-0 items-center gap-3">
           <svg
             viewBox="0 0 48 48"
             className="h-11 w-11 shrink-0"
@@ -47,15 +50,19 @@ const Navbar = () => {
               Online Course &amp; Edu
             </p>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav links */}
         <ul className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <a
-                href="#"
-                className="flex items-center gap-1 text-sm font-medium tracking-wide text-gray-800 transition hover:text-teal-500"
+              <Link
+                to={link.path}
+                className={`flex items-center gap-1 text-sm font-medium tracking-wide transition hover:text-teal-500 ${
+                  location.pathname === link.path
+                    ? 'text-teal-500'
+                    : 'text-gray-800'
+                }`}
               >
                 {link.label}
                 {link.hasDropdown && (
@@ -73,7 +80,7 @@ const Navbar = () => {
                     />
                   </svg>
                 )}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -101,10 +108,13 @@ const Navbar = () => {
             </svg>
           </button>
 
-          <button className="hidden items-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600 md:flex">
+          <Link
+            to="/courses"
+            className="hidden items-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600 md:flex"
+          >
             APPLY NOW
             <span aria-hidden="true">&rarr;</span>
-          </button>
+          </Link>
 
           {/* Hamburger Menu Button (Mobile) */}
           <button
@@ -193,9 +203,13 @@ const Navbar = () => {
             <ul className="space-y-4">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href="#"
-                    className="flex items-center justify-between py-2 text-base font-medium text-gray-800 transition hover:text-teal-500"
+                  <Link
+                    to={link.path}
+                    className={`flex items-center justify-between py-2 text-base font-medium transition hover:text-teal-500 ${
+                      location.pathname === link.path
+                        ? 'text-teal-500'
+                        : 'text-gray-800'
+                    }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
@@ -214,18 +228,20 @@ const Navbar = () => {
                         />
                       </svg>
                     )}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
 
             {/* Mobile Apply Now Button */}
-            <button className="mt-6 w-full rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600">
+            <Link
+              to="/courses"
+              className="mt-6 flex w-full items-center justify-center rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600"
+              onClick={() => setIsMenuOpen(false)}
+            >
               APPLY NOW
-              <span aria-hidden="true" className="ml-2">
-                &rarr;
-              </span>
-            </button>
+              <span aria-hidden="true" className="ml-2">&rarr;</span>
+            </Link>
           </nav>
         </div>
       </div>
