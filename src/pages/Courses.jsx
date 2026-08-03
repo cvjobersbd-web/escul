@@ -1,81 +1,7 @@
 // Courses.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const COURSES = [
-  {
-    image: 'https://i.ibb.co.com/rGttSLJy/The-Ultimate-Figma-Course-From-Zero-to-Expert.jpg',
-    title: 'The Ultimate Figma Course From Zero to Expert',
-    rating: 0,
-    lessons: 7,
-    duration: '60h30m',
-    price: '30.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/qZ60Vqg/Flutter-Development-Bootcamp-with-Dart.jpg',
-    title: 'Flutter Development Bootcamp with Dart',
-    rating: 0,
-    lessons: 7,
-    duration: '40h20m',
-    price: '60.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/XZSqdW0B/Complete-Web-Design-from-Figma-to-Webflow.jpg',
-    title: 'Complete Web Design: from Figma to Webflow',
-    rating: 0,
-    lessons: 7,
-    duration: '65h50m',
-    price: '45.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/bgN84gQH/Dynamic-website-development-to-make-money-from-online.jpg',
-    title: 'Dynamic Website Development to Make Money Online',
-    rating: 0,
-    lessons: 8,
-    duration: '52h15m',
-    price: '55.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/w1pvB8x/Online-learning-management-system-learn-dash-course.jpg',
-    title: 'Online Learning Management System (LearnDash) Course',
-    rating: 0,
-    lessons: 6,
-    duration: '38h40m',
-    price: '40.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/2YpD90Bt/Basic-to-Advance-UX-UI-Design-and-live-Training.jpg',
-    title: 'Basic to Advance UX/UI Design with Live Training',
-    rating: 0,
-    lessons: 9,
-    duration: '70h10m',
-    price: '65.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/KjyJyXy8/English-grammar-courses-online-with-real-certificates.jpg',
-    title: 'English Grammar Course Online with Real Certificate',
-    rating: 0,
-    lessons: 10,
-    duration: '30h00m',
-    price: '25.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/ZpRSvpsk/Basic-Word-Press-theme-development-full-course.jpg',
-    title: 'Basic WordPress Theme Development Full Course',
-    rating: 0,
-    lessons: 7,
-    duration: '45h25m',
-    price: '35.00',
-  },
-  {
-    image: 'https://i.ibb.co.com/rf3RgYqG/Complete-React-Front-end-developer-course.jpg',
-    title: 'Complete React Front-end Developer Course',
-    rating: 0,
-    lessons: 8,
-    duration: '58h35m',
-    price: '50.00',
-  },
-];
+import { COURSES } from '../data/coursesData';
 
 const StarRating = ({ rating = 0 }) => (
   <div className="flex items-center gap-1 text-amber-400">
@@ -145,7 +71,7 @@ const CourseCard = ({ course }) => (
       <div className="mt-6 flex items-center justify-between">
         <span className="text-xl font-extrabold text-teal-500">${course.price}</span>
         <Link
-          to="#"
+          to={`/courses/${course.id}`}
           className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-5 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-teal-500 hover:bg-teal-500 hover:text-white"
         >
           View Details
@@ -171,7 +97,7 @@ const Courses = () => {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 sm:grid-cols-2 md:px-12 lg:grid-cols-3 lg:px-20">
           {COURSES.map((course) => (
-            <CourseCard key={course.title} course={course} />
+            <CourseCard key={course.id} course={course} />
           ))}
         </div>
       </section>

@@ -7,9 +7,8 @@ const navLinks = [
   { label: 'ABOUT US', path: '/about', hasDropdown: false },
   { label: 'COURSES', path: '/courses', hasDropdown: false },
   { label: 'FAQ', path: '/faq', hasDropdown: false },
-  { label: 'PAGES', path: '/pages', hasDropdown: true },
-  { label: 'BLOG', path: '/blog', hasDropdown: true },
-  { label: 'CONTACT US', path: '/contact', hasDropdown: false },
+  { label: 'MY CLASS', path: '/my-class', hasDropdown: false },
+  { label: 'HELPDESK', path: '/helpdesk', hasDropdown: false },
 ];
 
 const Navbar = () => {
@@ -85,35 +84,18 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right actions */}
+        {/* Right actions - Login Button */}
         <div className="flex shrink-0 items-center gap-3">
-          <button
-            aria-label="Search"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:border-teal-400 hover:text-teal-500"
-          >
-            <svg viewBox="0 0 24 24" fill="none" className="h-4.5 w-4.5">
-              <circle
-                cx="11"
-                cy="11"
-                r="7"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <path
-                d="M21 21l-4.3-4.3"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-
           <Link
-            to="/courses"
-            className="hidden items-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600 md:flex"
+            to="/login"
+            className="flex items-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600"
           >
-            APPLY NOW
-            <span aria-hidden="true">&rarr;</span>
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+              <polyline points="10 17 15 12 10 7" />
+              <line x1="15" y1="12" x2="3" y2="12" />
+            </svg>
+            LOGIN
           </Link>
 
           {/* Hamburger Menu Button (Mobile) */}
@@ -137,23 +119,6 @@ const Navbar = () => {
                 isMenuOpen ? '-translate-y-2 -rotate-45' : ''
               }`}
             />
-          </button>
-
-          <button
-            aria-label="More options"
-            className="hidden h-11 w-11 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition hover:border-teal-400 hover:text-teal-500 sm:flex"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
-              <circle cx="5" cy="5" r="1.6" />
-              <circle cx="12" cy="5" r="1.6" />
-              <circle cx="19" cy="5" r="1.6" />
-              <circle cx="5" cy="12" r="1.6" />
-              <circle cx="12" cy="12" r="1.6" />
-              <circle cx="19" cy="12" r="1.6" />
-              <circle cx="5" cy="19" r="1.6" />
-              <circle cx="12" cy="19" r="1.6" />
-              <circle cx="19" cy="19" r="1.6" />
-            </svg>
           </button>
         </div>
       </div>
@@ -233,14 +198,18 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Mobile Apply Now Button */}
+            {/* Mobile Login Button */}
             <Link
-              to="/courses"
-              className="mt-6 flex w-full items-center justify-center rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600"
+              to="/login"
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-sm font-bold tracking-wide text-white shadow-md shadow-teal-500/30 transition hover:bg-teal-600"
               onClick={() => setIsMenuOpen(false)}
             >
-              APPLY NOW
-              <span aria-hidden="true" className="ml-2">&rarr;</span>
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" y1="12" x2="3" y2="12" />
+              </svg>
+              LOGIN
             </Link>
           </nav>
         </div>

@@ -1,4 +1,6 @@
+// Home.jsx
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -30,10 +32,13 @@ const Home = () => {
             Education can be thought of as the transmission of the values and
             accumulated knowledge of a society.
           </p>
-          <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-teal-500 px-7 py-3.5 text-sm font-bold tracking-wide text-white shadow-lg shadow-teal-500/30 transition hover:bg-teal-600">
+          <Link
+            to="/courses"
+            className="inline-flex items-center gap-2 rounded-full bg-teal-500 px-7 py-3.5 text-sm font-bold tracking-wide text-white shadow-lg shadow-teal-500/30 transition hover:bg-teal-600"
+          >
             GET STARTED
             <span aria-hidden="true">&rarr;</span>
-          </button>
+          </Link>
         </div>
 
         {/* Right column: image */}
@@ -65,8 +70,10 @@ const Home = () => {
   );
 };
 
+// coursesData.js থেকে সঠিক id ব্যবহার করা হয়েছে
 const POPULAR_COURSES = [
   {
+    id: 7, // English Grammar Courses Online with Real Certificates
     image: 'https://i.ibb.co.com/zTLFFjCs/English-grammar-courses-online-with-real-certificates.jpg',
     title: 'English Grammar Courses Online with Real Certificates',
     lessons: '7 Lesson',
@@ -74,6 +81,7 @@ const POPULAR_COURSES = [
     price: '25.00',
   },
   {
+    id: 8, // Basic WordPress Theme Development Full Course
     image: 'https://i.ibb.co.com/C56wy20s/Basic-Word-Press-theme-development-full-course.jpg',
     title: 'Basic WordPress Theme Development Full Course',
     lessons: '7 Lesson',
@@ -81,6 +89,7 @@ const POPULAR_COURSES = [
     price: '35.00',
   },
   {
+    id: 9, // Complete React Front-end Developer Course
     image: 'https://i.ibb.co.com/rGg8RmrT/Complete-React-Front-end-developer-course.jpg',
     title: 'Complete React Front-end Developer Course',
     lessons: '7 Lesson',
@@ -88,6 +97,7 @@ const POPULAR_COURSES = [
     price: '55.00',
   },
   {
+    id: 3, // Complete Web Design: from Figma to Webflow
     image: 'https://i.ibb.co.com/k280nfcM/Complete-Web-Design.jpg',
     title: 'Complete Web Design: from Figma to Webflow',
     lessons: '7 Lesson',
@@ -95,6 +105,7 @@ const POPULAR_COURSES = [
     price: '45.00',
   },
   {
+    id: 2, // Flutter Development Bootcamp with Dart
     image: 'https://i.ibb.co.com/cXMrB7mb/Flutter-Development-Bootcamp-with-Dart.jpg',
     title: 'Flutter Development Bootcamp with Dart',
     lessons: '7 Lesson',
@@ -102,6 +113,7 @@ const POPULAR_COURSES = [
     price: '60.00',
   },
   {
+    id: 1, // The Ultimate Figma Course From Zero to Expert
     image: 'https://i.ibb.co.com/Q32x6mD3/The-Ultimate-Figma-Course-From-Zero-to-Expert.jpg',
     title: 'The Ultimate Figma Course From Zero to Expert',
     lessons: '7 Lesson',
@@ -172,15 +184,15 @@ const CourseCard = ({ course }) => (
 
       <div className="mt-5 flex items-center justify-between">
         <span className="text-xl font-extrabold text-teal-500">${course.price}</span>
-        <button
-          type="button"
-          className="group flex items-center gap-2 rounded-full border border-gray-200 px-5 py-2.5 text-sm font-semibold text-gray-800 transition hover:border-teal-500 hover:text-teal-600"
+        <Link
+          to={`/courses/${course.id}`}
+          className="group flex items-center gap-2 rounded-full border border-gray-200 px-5 py-2.5 text-sm font-semibold text-gray-800 transition hover:border-teal-500 hover:bg-teal-500 hover:text-white"
         >
           View Details
           <svg viewBox="0 0 24 24" className="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
-        </button>
+        </Link>
       </div>
     </div>
   </div>
@@ -200,7 +212,7 @@ const PopularCourses = () => (
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {POPULAR_COURSES.map((course) => (
-          <CourseCard key={course.title} course={course} />
+          <CourseCard key={course.id} course={course} />
         ))}
       </div>
     </div>
@@ -338,13 +350,13 @@ const AboutSection = () => (
           ))}
         </div>
 
-        <button
-          type="button"
+        <Link
+          to="/about"
           className="mt-10 inline-flex items-center gap-2 rounded-full bg-teal-500 px-7 py-3.5 text-sm font-bold tracking-wide text-white shadow-lg shadow-teal-500/30 transition hover:bg-teal-600"
         >
           MORE ABOUT US
           <span aria-hidden="true">&rarr;</span>
-        </button>
+        </Link>
       </div>
     </div>
   </section>
@@ -430,7 +442,7 @@ const TeachersSection = () => {
     if (!track) return;
     const card = track.querySelector('[data-teacher-card]');
     if (!card) return;
-    const step = card.offsetWidth + 20; // gap-5 = 20px
+    const step = card.offsetWidth + 20;
     const index = Math.round(track.scrollLeft / step);
     setActiveIndex(Math.max(0, Math.min(index, TEACHERS.length - 1)));
   };
@@ -612,13 +624,13 @@ const CtaSection = () => (
           (+1) 123 456 7890
         </p>
 
-        <button
-          type="button"
+        <Link
+          to="/courses"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal-500 px-6 py-3 text-xs font-bold tracking-wide text-white shadow-lg shadow-teal-500/30 transition hover:bg-teal-600"
         >
           JOIN WITH US
           <span aria-hidden="true">&rarr;</span>
-        </button>
+        </Link>
       </div>
 
       {/* Right: image */}
